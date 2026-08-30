@@ -1,1 +1,2268 @@
-Your mom
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triambak Ramachandran — Data Engineer &amp; ML Systems</title>
+<meta name="description" content="Triambak Ramachandran is a Senior Data Engineer at Genpact building Databricks/Spark infrastructure at scale and applied ML systems — from Lakehouse platforms to RAG pipelines and neural architecture search.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Triambak Ramachandran — Data Engineer & ML Systems">
+<meta property="og:description" content="Senior Data Engineer at Genpact. Databricks/Spark infrastructure at scale, applied ML, GenAI and neural architecture search.">
+<meta property="og:url" content="https://triambak.dev/">
+<meta property="og:site_name" content="Triambak Ramachandran">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Triambak Ramachandran — Data Engineer & ML Systems">
+<meta name="twitter:description" content="Senior Data Engineer at Genpact. Databricks/Spark infrastructure at scale, applied ML, GenAI and neural architecture search.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<noscript>
+  <style>
+    /* The graph, map drawing and games are JS-only enhancements.
+       Without JS, drop the empty frames and keep the written content. */
+    .graph-stage, .graph-side, .graph-fallback, #map-svg, #playground, .tabs { display: none !important; }
+    .tabpanel[hidden] { display: block !important; }
+    .map-shell { grid-template-columns: 1fr !important; }
+    .panel-note { display: none; }
+  </style>
+</noscript>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Triambak Ramachandran",
+  "jobTitle": "Senior Data Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Genpact"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bengaluru",
+    "addressCountry": "IN"
+  },
+  "email": "mailto:triambakramachandran@gmail.com",
+  "telephone": "+91-8667046184",
+  "sameAs": [
+    "https://linkedin.com/in/triambak-r",
+    "https://github.com/arizebolt"
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #faf8f4;
+    --bg-elevated: #f2efe8;
+    --ink: #1c1a17;
+    --ink-soft: #4a463f;
+    --ink-faint: #6f6859;
+    --line: #ddd7ca;
+    --line-strong: #c3bcac;
+    --accent: #a8431e;
+    --accent-ink: #ffffff;
+    --focus: #1c1a17;
+    --cat-role: #a8431e;
+    --cat-project: #2f6b5f;
+    --cat-domain: #7a5a12;
+    --cat-tech: #5a5346;
+    --ok: #2f6b5f;
+    --warn: #a8431e;
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+    --max: 1180px;
+    --edge: clamp(20px, 5vw, 64px);
+  }
+
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #171512;
+      --bg-elevated: #201d19;
+      --ink: #ece7dd;
+      --ink-soft: #beb6a6;
+      --ink-faint: #948c7d;
+      --line: #34302a;
+      --line-strong: #47423a;
+      --accent: #e08252;
+      --accent-ink: #171512;
+      --focus: #ece7dd;
+      --cat-role: #e08252;
+      --cat-project: #6fb8a4;
+      --cat-domain: #d0a94e;
+      --cat-tech: #a49a88;
+      --ok: #6fb8a4;
+      --warn: #e08252;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #171512;
+    --bg-elevated: #201d19;
+    --ink: #ece7dd;
+    --ink-soft: #beb6a6;
+    --ink-faint: #948c7d;
+    --line: #34302a;
+    --line-strong: #47423a;
+    --accent: #e08252;
+    --accent-ink: #171512;
+    --focus: #ece7dd;
+    --cat-role: #e08252;
+    --cat-project: #6fb8a4;
+    --cat-domain: #d0a94e;
+    --cat-tech: #a49a88;
+    --ok: #6fb8a4;
+    --warn: #e08252;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.08;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  p { margin: 0; }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-left: var(--edge);
+    padding-right: var(--edge);
+  }
+
+  /* ---------- Nav ---------- */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--edge);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .nav-mark {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex;
+    gap: clamp(14px, 2vw, 28px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.87rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.01em;
+    padding: 4px 2px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a[aria-current="true"] {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .theme-toggle:hover { background: var(--bg-elevated); }
+  .theme-toggle svg { width: 17px; height: 17px; }
+  .theme-toggle .icon-moon { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: clamp(56px, 11vw, 120px) 0 clamp(48px, 8vw, 88px);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(28px, 5vw, 64px);
+    align-items: end;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    max-width: 15ch;
+  }
+  .hero-role {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    color: var(--ink-soft);
+    margin-top: 18px;
+    max-width: 42ch;
+    line-height: 1.4;
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+    color: var(--ink-faint);
+    font-size: 0.92rem;
+  }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ink-faint); flex-shrink: 0; }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 3px;
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+  .btn-solid {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn-solid:hover { transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line-strong);
+  }
+  .btn-outline:hover { border-color: var(--ink); }
+
+  .stat-col {
+    border-left: 1px solid var(--line);
+    padding-left: clamp(20px, 3vw, 32px);
+  }
+  .stat {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .stat:first-child { padding-top: 0; }
+  .stat:last-child { border-bottom: none; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    color: var(--accent);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.83rem;
+    color: var(--ink-faint);
+    margin-top: 4px;
+    display: block;
+    line-height: 1.4;
+  }
+
+  /* ---------- Section shell ---------- */
+  section { padding: clamp(56px, 9vw, 100px) 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  }
+
+  /* ---------- About ---------- */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.6fr;
+    gap: clamp(24px, 5vw, 64px);
+  }
+  .about-layout p {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .about-layout p + p { margin-top: 22px; }
+  .about-layout strong { color: var(--ink); font-weight: 500; }
+
+  /* ---------- Experience ---------- */
+  .timeline { position: relative; }
+  .job {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: clamp(20px, 4vw, 48px);
+    padding: clamp(28px, 4vw, 40px) 0;
+    border-top: 1px solid var(--line);
+  }
+  .job:first-child { border-top: none; padding-top: 0; }
+  .job-dates {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    padding-top: 6px;
+  }
+  .job-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .job-title-row h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+  .job-company {
+    color: var(--accent);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.98rem;
+  }
+  .job-loc {
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+  }
+  .job ul {
+    margin: 0 0 16px 0;
+    padding: 0;
+    list-style: none;
+  }
+  .job li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 9px;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+  .job li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--ink-faint);
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    padding: 4px 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Projects ---------- */
+  .project-list { display: flex; flex-direction: column; gap: clamp(24px, 4vw, 36px); }
+  .project-card {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: clamp(24px, 4vw, 40px);
+    background: var(--bg-elevated);
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: clamp(20px, 4vw, 48px);
+  }
+  .project-head h3 {
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+    margin-bottom: 10px;
+  }
+  .project-stack {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    line-height: 1.7;
+  }
+  .project-period {
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    margin-top: 10px;
+    display: block;
+  }
+  .project-body dl { margin: 0; display: grid; gap: 16px; }
+  .project-body dt {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+  .project-body dd {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+
+  /* ---------- Tabs (shared) ---------- */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .tab {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 10px 14px;
+    margin-bottom: -1px;
+    color: var(--ink-faint);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab[aria-selected="true"] {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+  .tabpanel[hidden] { display: none; }
+
+  .panel-note {
+    font-size: 0.9rem;
+    color: var(--ink-faint);
+    margin-bottom: 18px;
+    max-width: 62ch;
+  }
+
+  /* ---------- Knowledge graph ---------- */
+  .graph-shell {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
+    align-items: start;
+  }
+  .graph-stage {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--bg-elevated);
+    overflow: hidden;
+  }
+  #graph-canvas {
+    display: block;
+    width: 100%;
+    height: 520px;
+    touch-action: none;
+    cursor: grab;
+  }
+  #graph-canvas:active { cursor: grabbing; }
+  .graph-legend {
+    position: absolute;
+    left: 14px;
+    bottom: 12px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    pointer-events: none;
+  }
+  .graph-legend span { display: flex; align-items: center; gap: 6px; }
+  .swatch { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .graph-hint {
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    pointer-events: none;
+  }
+  .graph-side {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px;
+    background: var(--bg-elevated);
+    min-height: 200px;
+  }
+  .graph-side .gs-kind {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+  }
+  .graph-side h3 {
+    font-size: 1.3rem;
+    margin: 8px 0 10px;
+  }
+  .graph-side p { color: var(--ink-soft); font-size: 0.92rem; }
+  .gs-links { margin-top: 16px; }
+  .gs-links h4 {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .gs-links .tag-cloud span { font-size: 0.8rem; padding: 4px 9px; background: var(--bg); }
+  .graph-fallback { margin-top: 22px; }
+  .graph-fallback summary {
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+  }
+  .graph-fallback summary:hover { color: var(--ink); }
+  .graph-fallback ul { margin: 14px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.9rem; }
+  .graph-fallback li { margin-bottom: 6px; }
+
+  /* ---------- Career map ---------- */
+  .map-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 320px) 1fr;
+    gap: clamp(24px, 5vw, 56px);
+    align-items: center;
+  }
+  #map-svg { max-height: 460px; }
+  #map-svg { width: 100%; height: auto; display: block; }
+  .map-dot { fill: var(--line-strong); }
+  .map-city { fill: var(--accent); }
+  .map-city-ring {
+    fill: none;
+    stroke: var(--accent);
+    opacity: 0.5;
+  }
+  .map-arc {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.2;
+    stroke-dasharray: 3 4;
+    opacity: 0.75;
+  }
+  .map-label {
+    font-family: var(--font-mono);
+    font-size: 7px;
+    fill: var(--ink-soft);
+  }
+  .map-steps { list-style: none; margin: 0; padding: 0; }
+  .map-step {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 18px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .map-step:first-child { border-top: none; }
+  .map-step .ms-year {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+  .map-step .ms-city { font-family: var(--font-display); font-size: 1.15rem; }
+  .map-step .ms-what { color: var(--ink-soft); font-size: 0.92rem; margin-top: 2px; }
+
+  /* ---------- Games ---------- */
+  .game {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--bg-elevated);
+    padding: clamp(20px, 3.5vw, 32px);
+  }
+  .game-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .game-head h3 { font-size: 1.35rem; }
+  .game-readout {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .game-readout b { color: var(--ink); font-weight: 500; }
+  .game-sub { color: var(--ink-soft); font-size: 0.92rem; margin-bottom: 20px; max-width: 68ch; }
+
+  /* pipeline game */
+  .rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    min-height: 52px;
+    padding: 10px;
+    border: 1px dashed var(--line-strong);
+    border-radius: 4px;
+    margin-bottom: 18px;
+  }
+  .rail:empty::after {
+    content: "Your pipeline builds here";
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+  }
+  .rail .stage-chip { border-color: var(--ok); color: var(--ink); }
+  .rail-arrow { color: var(--ink-faint); font-family: var(--font-mono); }
+  .tray { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stage-chip {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    padding: 9px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: 3px;
+    background: var(--bg);
+    color: var(--ink);
+    cursor: pointer;
+    transition: border-color 0.15s ease, transform 0.12s ease, background 0.15s ease;
+  }
+  .stage-chip:hover:not(:disabled) { border-color: var(--ink); }
+  .stage-chip:disabled { opacity: 0.35; cursor: default; }
+  .shake { animation: shake 0.32s ease; border-color: var(--warn) !important; }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .shake { animation: none; }
+  }
+
+  /* optimizer game */
+  .opt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .opt {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: 3px;
+    background: var(--bg);
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+  }
+  .opt:hover { border-color: var(--ink); }
+  .opt input { margin-top: 3px; accent-color: var(--accent); flex-shrink: 0; }
+  .opt-name { font-size: 0.9rem; display: block; }
+  .opt-why {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    display: block;
+    margin-top: 3px;
+    line-height: 1.45;
+  }
+  .opt.is-on { border-color: var(--accent); }
+  .opt.is-locked { opacity: 0.45; cursor: not-allowed; }
+  .meters { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+  .meter-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .meter-track {
+    height: 6px;
+    background: var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .meter-fill {
+    height: 100%;
+    background: var(--warn);
+    width: 100%;
+    transition: width 0.35s ease, background 0.35s ease;
+  }
+  .meter-fill.is-ok { background: var(--ok); }
+  .verdict {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    padding: 14px 16px;
+    border-left: 2px solid var(--line-strong);
+    background: var(--bg);
+    border-radius: 0 3px 3px 0;
+  }
+  .verdict.is-win { border-left-color: var(--ok); }
+  .verdict.is-lose { border-left-color: var(--warn); }
+  .verdict strong { color: var(--ink); font-weight: 500; }
+  .game-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .btn-sm {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    padding: 9px 16px;
+    border-radius: 3px;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .btn-sm:hover { border-color: var(--ink); }
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(28px, 4vw, 44px) clamp(28px, 5vw, 64px);
+  }
+  .skill-group h3 {
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag-cloud span {
+    font-size: 0.88rem;
+    padding: 6px 12px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Education ---------- */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 5vw, 64px);
+  }
+  .edu-grid h3 {
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    font-weight: 400;
+    margin-bottom: 18px;
+  }
+  .edu-item { padding-bottom: 18px; }
+  .edu-item .deg { font-family: var(--font-display); font-size: 1.15rem; }
+  .edu-item .inst { color: var(--ink-soft); margin-top: 4px; font-size: 0.95rem; }
+  .edu-item .meta { color: var(--ink-faint); font-size: 0.85rem; margin-top: 4px; }
+  .cert-item {
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+  }
+  .cert-item:first-of-type { border-top: none; }
+
+  /* ---------- Contact ---------- */
+  .contact-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .contact-inner h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    max-width: 14ch;
+  }
+  .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: right;
+  }
+  .contact-list a {
+    text-decoration: none;
+    font-size: 1.05rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .contact-list a:hover { border-color: var(--ink); color: var(--accent); }
+
+  footer {
+    padding: 28px var(--edge) 40px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .stat-col {
+      border-left: none;
+      border-top: 1px solid var(--line);
+      padding-left: 0;
+      padding-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+    }
+    .stat { border-bottom: none; padding: 12px 0; }
+    .about-layout { grid-template-columns: 1fr; }
+    .job { grid-template-columns: 1fr; }
+    .job-dates { padding-top: 0; }
+    .project-card { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-inner { flex-direction: column; align-items: flex-start; }
+    .contact-list { text-align: left; }
+    .graph-shell { grid-template-columns: 1fr; }
+    .map-shell { grid-template-columns: 1fr; }
+    #graph-canvas { height: 420px; }
+    .meters { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 900px) {
+    .nav-links {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      flex-direction: column;
+      padding: 8px var(--edge) 20px;
+      gap: 4px;
+      transform: translateY(-8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+    .nav-links.is-open {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .nav-links a { display: block; padding: 10px 0; font-size: 0.98rem; }
+    .nav-toggle { display: flex; }
+  }
+
+  @media (max-width: 480px) {
+    .wrap, .nav-inner { padding-left: 18px; padding-right: 18px; }
+    #graph-canvas { height: 360px; }
+    .map-step { grid-template-columns: 1fr; gap: 2px; }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    .site-nav, .theme-toggle, .nav-toggle, .hero-actions, footer,
+    #playground, .graph-stage, .graph-side, .tabs, .graph-hint { display: none; }
+    #map .map-shell { grid-template-columns: 1fr; }
+    .tabpanel[hidden] { display: block !important; }
+    body { background: #fff; color: #000; font-size: 11pt; }
+    section { border: none; padding: 14px 0; break-inside: avoid; }
+    .wrap { max-width: 100%; padding: 0; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    a { color: #000; text-decoration: underline; }
+    .project-card { border: 1px solid #999; background: #fff; }
+    .stat-num, .job-company { color: #000; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark">Triambak R.</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#map">Map</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#playground">Playground</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark and light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Data Engineer &amp; ML Systems</span>
+        <h1>Triambak Ramachandran</h1>
+        <p class="hero-role">I build the Databricks &amp; Spark infrastructure machine learning runs on — and I build the machine learning too.</p>
+        <p class="hero-meta">
+          <span>Bengaluru, India</span>
+          <span class="dot" aria-hidden="true"></span>
+          <span>Senior Data Engineer, Genpact</span>
+          <span class="dot" aria-hidden="true"></span>
+          <span>~2.5 yrs experience</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="./Triambak_Ramachandran_Resume.pdf" download>Download Resume</a>
+          <a class="btn btn-outline" href="mailto:triambakramachandran@gmail.com">Email me</a>
+        </div>
+      </div>
+      <div class="stat-col" role="list" aria-label="Headline achievements">
+        <div class="stat" role="listitem">
+          <span class="stat-num">10K+</span>
+          <span class="stat-label">Users served by the Databricks Lakehouse platform, across 40+ business domains</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat-num">40% / 25%</span>
+          <span class="stat-label">Faster pipelines / lower compute cost after optimization</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat-num">Zero</span>
+          <span class="stat-label">Downtime on the HR data migration covering 10K+ employees</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat-num">1.5 yrs</span>
+          <span class="stat-label">To promotion — Data Engineer to Senior Data Engineer</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">01 — About</span>
+      </div>
+      <div class="about-layout">
+        <h2 class="section-title reveal">Infrastructure first,<br>models second.</h2>
+        <div>
+          <p class="reveal">I'm a Senior Data Engineer at Genpact, where I own the technical strategy for a Databricks Lakehouse platform that 10,000+ people across 40+ business domains depend on every day. My work sits at the layer most ML teams take for granted: <strong>the pipelines, the governance, the SLAs</strong> that decide whether a model ever sees production-quality data.</p>
+          <p class="reveal">Before that, I spent a year in applied ML and research — building a RAG-based document assistant, running customer segmentation for retail personalization, and using neural architecture search and evolutionary algorithms to compress and optimize CNNs.</p>
+          <p class="reveal">I like the seam between the two disciplines: systems that are correct, fast and cheap to run, in service of models that are worth running. I'm currently looking for engineering roles where both halves of that matter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">02 — Experience</span>
+        <h2 class="section-title">Where I've worked</h2>
+      </div>
+      <div class="timeline">
+
+        <article class="job reveal">
+          <div class="job-dates">Oct 2024 — Present</div>
+          <div>
+            <div class="job-title-row">
+              <h3>Senior Data Engineer</h3>
+              <span class="job-company">Genpact</span>
+              <span class="job-loc">Bengaluru</span>
+            </div>
+            <ul>
+              <li>Own technical strategy and delivery for a large-scale HR data platform on Databricks serving 10K+ users across 40+ business domains</li>
+              <li>Architect PySpark and Delta Live Tables pipelines across the full Medallion stack (Bronze/Silver/Gold) with data quality checks, SLAs and schema governance</li>
+              <li>Led a zero-downtime UKG → Workday migration for 10K+ employees; built Auto Loader with CDC merge for streaming ingestion at sub-5-minute latency</li>
+              <li>Migrated Greenplum/PostgreSQL datasets to the Lakehouse; replaced legacy Talend jobs with Python-based Airflow DAGs, including orchestration, SLAs, retries and alerting</li>
+              <li>Optimized PySpark joins, partitioning and shuffles; tuned SQL warehouses via Z-Ordering, result caching and materialized views</li>
+              <li>Built CI/CD with Databricks Asset Bundles and Azure DevOps; selected into Genpact's Solution Architect program</li>
+              <li>Trained 200+ colleagues in machine learning, AI and deep learning</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Databricks</span><span class="tag">PySpark</span><span class="tag">Delta Live Tables</span><span class="tag">Airflow</span><span class="tag">Azure DevOps</span><span class="tag">Unity Catalog</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="job reveal">
+          <div class="job-dates">Feb 2024 — Aug 2024</div>
+          <div>
+            <div class="job-title-row">
+              <h3>Data Science Intern</h3>
+              <span class="job-company">Genpact</span>
+              <span class="job-loc">Hyderabad</span>
+            </div>
+            <ul>
+              <li>Built a PDF question-answering assistant using retrieval-augmented generation (RAG) — document chunking, vector embeddings, semantic search — served via the OpenAI API alongside custom Hugging Face transformer models</li>
+              <li>Built customer segmentation for retail personalization using K-Means and hierarchical clustering, plus collaborative-filtering recommendation systems</li>
+              <li>Ran NLP on customer feedback: tokenization, embeddings and sentiment scoring</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">RAG</span><span class="tag">OpenAI API</span><span class="tag">Hugging Face</span><span class="tag">scikit-learn</span><span class="tag">NLP</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="job reveal">
+          <div class="job-dates">Jan 2023 — Dec 2023</div>
+          <div>
+            <div class="job-title-row">
+              <h3>Research Intern, Machine Learning</h3>
+              <span class="job-company">MulticoreWare</span>
+              <span class="job-loc">Remote</span>
+            </div>
+            <ul>
+              <li>Implemented neural architecture search with NSGA-Net and NEAT, using multi-objective evolutionary optimization to co-optimize accuracy, parameter count and inference latency</li>
+              <li>Extended the EvoPrunerPool framework with genetic-algorithm-driven filter selection, compressing CNNs while retaining baseline accuracy</li>
+              <li>Automated hyperparameter tuning with evolutionary strategies — population-based mutation and crossover — replacing manual grid search</li>
+              <li>Prototyped Differentiable Architecture Search (DARTS) and benchmarked all NAS variants for accuracy vs. FLOPs and wall-clock efficiency</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">NAS</span><span class="tag">NSGA-Net</span><span class="tag">NEAT</span><span class="tag">DARTS</span><span class="tag">Evolutionary Algorithms</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">03 — Selected Work</span>
+        <h2 class="section-title">A closer look</h2>
+      </div>
+      <div class="project-list">
+
+        <article class="project-card reveal">
+          <div class="project-head">
+            <h3>Violence Detection</h3>
+            <span class="project-stack">Python · TensorFlow · Keras · 3D CNNs · Vision Transformers</span>
+            <span class="project-period">Jan 2024 — May 2024</span>
+          </div>
+          <div class="project-body">
+            <dl>
+              <div>
+                <dt>Problem</dt>
+                <dd>Detecting violent behavior in video reliably enough to be useful, without the inference cost of a full 3D CNN on every frame.</dd>
+              </div>
+              <div>
+                <dt>Approach</dt>
+                <dd>Trained and benchmarked four architecture families — Vision Transformers, X3D, MobileNet with attention, and a lightweight custom 3D CNN — on the RWF-2000 and RLVS datasets, tuning hyperparameters per architecture.</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>A comparative benchmark across architectures on accuracy vs. inference efficiency, identifying which model family is worth its compute cost for real-time video screening.</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-head">
+            <h3>Faculty Dashboard</h3>
+            <span class="project-stack">HTML · CSS · JavaScript · Flask · MySQL</span>
+            <span class="project-period">Feb 2023 — Jun 2023</span>
+          </div>
+          <div class="project-body">
+            <dl>
+              <div>
+                <dt>Problem</dt>
+                <dd>Faculty administrative work — attendance, grading, assignment submission — was manual, scattered, and gave no visibility into performance trends.</dd>
+              </div>
+              <div>
+                <dt>Approach</dt>
+                <dd>Built a full faculty management system on Flask and MySQL covering attendance tracking, grade management and assignment submission, then tested it end-to-end with JUnit, Postman and Selenium.</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Automated administrative workflows that previously required manual tracking, and surfaced performance trends that weren't visible before.</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="map">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">04 — The Map</span>
+        <h2 class="section-title">How it all connects</h2>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Map views">
+        <button class="tab" role="tab" id="tab-graph" aria-controls="panel-graph" aria-selected="true">Knowledge Graph</button>
+        <button class="tab" role="tab" id="tab-path" aria-controls="panel-path" aria-selected="false" tabindex="-1">Career Path</button>
+      </div>
+
+      <div class="tabpanel" id="panel-graph" role="tabpanel" aria-labelledby="tab-graph">
+        <p class="panel-note">Every role, project, domain and tool I've worked with, and the edges between them. Hover or tap a node to trace its connections — drag to rearrange.</p>
+        <div class="graph-shell">
+          <div class="graph-stage">
+            <canvas id="graph-canvas" role="img" aria-label="Interactive force-directed graph connecting roles, projects, domains and technologies. A text version of every connection is available below the graph."></canvas>
+            <div class="graph-hint" id="graph-hint">drag · hover · click</div>
+            <div class="graph-legend">
+              <span><i class="swatch" style="background:var(--cat-role)"></i>Roles</span>
+              <span><i class="swatch" style="background:var(--cat-project)"></i>Projects</span>
+              <span><i class="swatch" style="background:var(--cat-domain)"></i>Domains</span>
+              <span><i class="swatch" style="background:var(--cat-tech)"></i>Tech</span>
+            </div>
+          </div>
+          <aside class="graph-side" id="graph-side" aria-live="polite">
+            <span class="gs-kind">Start here</span>
+            <h3>The through-line</h3>
+            <p>Three roles, five projects, one thread: data infrastructure and the models that run on it. Pick any node to see what it touches.</p>
+          </aside>
+        </div>
+
+        <details class="graph-fallback">
+          <summary>View the graph as text</summary>
+          <ul id="graph-text"></ul>
+        </details>
+      </div>
+
+      <div class="tabpanel" id="panel-path" role="tabpanel" aria-labelledby="tab-path" hidden>
+        <p class="panel-note">Four years, three cities, one remote research post — plotted on the map of India.</p>
+        <div class="map-shell">
+          <svg id="map-svg" viewBox="10 0 186 248" role="img" aria-labelledby="map-title map-desc">
+            <title id="map-title">Map of India marking Coimbatore, Bengaluru and Hyderabad</title>
+            <desc id="map-desc">A dot-matrix outline of India with three highlighted cities: Coimbatore in the south where Triambak studied, Bengaluru where he works now, and Hyderabad where he interned.</desc>
+            <g id="map-dots"></g>
+            <g id="map-arcs"></g>
+            <g id="map-cities"></g>
+          </svg>
+          <ol class="map-steps">
+            <li class="map-step">
+              <span class="ms-year">2020—2024</span>
+              <span>
+                <span class="ms-city">Coimbatore</span>
+                <span class="ms-what">B.Tech in Computer Science &amp; Engineering at Amrita Vishwa Vidyapeetham. CGPA 8.65.</span>
+              </span>
+            </li>
+            <li class="map-step">
+              <span class="ms-year">2023</span>
+              <span>
+                <span class="ms-city">Remote</span>
+                <span class="ms-what">Research Intern at MulticoreWare — neural architecture search and CNN compression, alongside final-year coursework.</span>
+              </span>
+            </li>
+            <li class="map-step">
+              <span class="ms-year">2024</span>
+              <span>
+                <span class="ms-city">Hyderabad</span>
+                <span class="ms-what">Data Science Intern at Genpact — RAG assistant, customer segmentation, NLP on feedback.</span>
+              </span>
+            </li>
+            <li class="map-step">
+              <span class="ms-year">2024—now</span>
+              <span>
+                <span class="ms-city">Bengaluru</span>
+                <span class="ms-what">Data Engineer, then Senior Data Engineer within 1.5 years. Databricks Lakehouse for 10K+ users.</span>
+              </span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">05 — Skills</span>
+        <h2 class="section-title">Tools &amp; technologies</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group reveal">
+          <h3>Languages</h3>
+          <div class="tag-cloud">
+            <span>Python</span><span>SQL</span><span>PySpark</span><span>Java</span><span>C++</span><span>C</span><span>JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Data Engineering</h3>
+          <div class="tag-cloud">
+            <span>Databricks</span><span>Apache Spark</span><span>Delta Lake</span><span>Delta Live Tables</span><span>Lakeflow Connect</span><span>dbt</span><span>Apache Airflow</span><span>Talend</span><span>ETL/ELT</span><span>Batch + Streaming</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Modeling &amp; Optimization</h3>
+          <div class="tag-cloud">
+            <span>Medallion / Lakehouse Architecture</span><span>Data Modeling</span><span>Star Schema</span><span>SCD Type 2</span><span>Z-Ordering</span><span>Partitioning</span><span>Query Profiling</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Cloud &amp; Storage</h3>
+          <div class="tag-cloud">
+            <span>AWS S3</span><span>Azure Data Lake</span><span>Unity Catalog</span><span>PostgreSQL</span><span>MySQL</span><span>Oracle</span><span>Greenplum</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>ML &amp; AI</h3>
+          <div class="tag-cloud">
+            <span>TensorFlow</span><span>PyTorch</span><span>Keras</span><span>scikit-learn</span><span>Deep Learning</span><span>3D CNNs</span><span>Vision Transformers</span><span>OpenCV</span><span>NAS (NSGA-Net, NEAT, DARTS)</span><span>Evolutionary Algorithms</span><span>Model Pruning &amp; Compression</span><span>NLP</span><span>Generative AI / LLMs</span><span>RAG</span><span>Vector Embeddings</span><span>Hugging Face</span><span>OpenAI API</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>DevOps</h3>
+          <div class="tag-cloud">
+            <span>Git</span><span>Docker</span><span>Azure DevOps</span><span>Databricks Asset Bundles</span><span>CI/CD</span><span>Agile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAYGROUND -->
+  <section id="playground">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">06 — Playground</span>
+        <h2 class="section-title">Two problems from my day job</h2>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Mini games">
+        <button class="tab" role="tab" id="tab-pipe" aria-controls="panel-pipe" aria-selected="true">Build the Pipeline</button>
+        <button class="tab" role="tab" id="tab-opt" aria-controls="panel-opt" aria-selected="false" tabindex="-1">Tune the Job</button>
+      </div>
+
+      <div class="tabpanel" id="panel-pipe" role="tabpanel" aria-labelledby="tab-pipe">
+        <div class="game">
+          <div class="game-head">
+            <h3>Build the Pipeline</h3>
+            <div class="game-readout">
+              <span>Time <b id="pipe-time">0.0s</b></span>
+              <span>Misses <b id="pipe-miss">0</b></span>
+              <span>Best <b id="pipe-best">—</b></span>
+            </div>
+          </div>
+          <p class="game-sub">This is the Medallion architecture I build on every day. Click the stages in the order data actually flows through a Lakehouse. Get one wrong and it bounces.</p>
+
+          <div class="rail" id="pipe-rail" aria-live="polite" aria-label="Assembled pipeline"></div>
+          <div class="tray" id="pipe-tray"></div>
+
+          <div class="verdict" id="pipe-verdict" hidden></div>
+          <div class="game-actions">
+            <button class="btn-sm" id="pipe-reset" type="button">Shuffle &amp; restart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabpanel" id="panel-opt" role="tabpanel" aria-labelledby="tab-opt" hidden>
+        <div class="game">
+          <div class="game-head">
+            <h3>Tune the Job</h3>
+            <div class="game-readout">
+              <span>Picks <b id="opt-count">0</b>/3</span>
+            </div>
+          </div>
+          <p class="game-sub">A nightly Spark job joins a 4&nbsp;TB fact table to a small dimension. It runs in 240s and burns 100 DBU. You get three optimizations. Land it under <b>120s</b> and <b>60 DBU</b> — some of these options are traps.</p>
+
+          <div class="meters">
+            <div>
+              <div class="meter-label"><span>Runtime</span><span id="opt-time">240s</span></div>
+              <div class="meter-track"><div class="meter-fill" id="opt-time-bar"></div></div>
+            </div>
+            <div>
+              <div class="meter-label"><span>Cost</span><span id="opt-cost">100 DBU</span></div>
+              <div class="meter-track"><div class="meter-fill" id="opt-cost-bar"></div></div>
+            </div>
+          </div>
+
+          <div class="opt-grid" id="opt-grid"></div>
+
+          <div class="verdict" id="opt-verdict">Pick up to three optimizations and watch the meters.</div>
+          <div class="game-actions">
+            <button class="btn-sm" id="opt-reset" type="button">Reset</button>
+            <button class="btn-sm" id="opt-explain" type="button">Explain the answers</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">07 — Education &amp; Certifications</span>
+      </div>
+      <div class="edu-grid">
+        <div class="reveal">
+          <h3>Education</h3>
+          <div class="edu-item">
+            <div class="deg">B.Tech, Computer Science &amp; Engineering</div>
+            <div class="inst">Amrita Vishwa Vidyapeetham, Coimbatore</div>
+            <div class="meta">2020 — 2024 · CGPA 8.65 / 10</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <h3>Certifications</h3>
+          <div class="cert-item">Databricks Certified Data Engineer Professional</div>
+          <div class="cert-item">Databricks Certified Data Engineer Associate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-inner">
+      <h2 class="reveal">Let's talk.</h2>
+      <ul class="contact-list reveal">
+        <li><a href="mailto:triambakramachandran@gmail.com">triambakramachandran@gmail.com</a></li>
+        <li><a href="tel:+918667046184">+91-8667046184</a></li>
+        <li><a href="https://linkedin.com/in/triambak-r" target="_blank" rel="noopener noreferrer">linkedin.com/in/triambak-r</a></li>
+        <li><a href="https://github.com/arizebolt" target="_blank" rel="noopener noreferrer">github.com/arizebolt</a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Triambak Ramachandran. Built by hand, one file.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---- Theme ----
+  var root = document.documentElement;
+  var toggle = document.getElementById('theme-toggle');
+  var STORAGE_KEY = 'portfolio-theme';
+
+  function applyTheme(theme) {
+    if (theme === 'light' || theme === 'dark') {
+      root.setAttribute('data-theme', theme);
+    } else {
+      root.removeAttribute('data-theme');
+    }
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  if (saved) applyTheme(saved);
+
+  toggle.addEventListener('click', function () {
+    var current = root.getAttribute('data-theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var effectiveCurrent = current || (prefersDark ? 'dark' : 'light');
+    var next = effectiveCurrent === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
+  });
+
+  // ---- Mobile nav ----
+  var navToggle = document.getElementById('nav-toggle');
+  var navLinks = document.getElementById('nav-links');
+  navToggle.addEventListener('click', function () {
+    var isOpen = navLinks.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      navLinks.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ---- Active section highlight ----
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+  var navAnchors = Array.prototype.slice.call(navLinks.querySelectorAll('a'));
+
+  function setActive(id) {
+    navAnchors.forEach(function (a) {
+      var match = a.getAttribute('href') === '#' + id;
+      if (match) { a.setAttribute('aria-current', 'true'); }
+      else { a.removeAttribute('aria-current'); }
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { navObserver.observe(s); });
+  }
+
+  // ---- Reveal on scroll ----
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  // ---- Tabs ----
+  document.querySelectorAll('[role="tablist"]').forEach(function (list) {
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+
+    function select(tab) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      window.dispatchEvent(new CustomEvent('tabshown', { detail: tab.getAttribute('aria-controls') }));
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () { select(tab); });
+      tab.addEventListener('keydown', function (e) {
+        var i = tabs.indexOf(tab);
+        var next = null;
+        if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+        if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (next) { e.preventDefault(); next.focus(); select(next); }
+      });
+    });
+  });
+
+  /* =========================================================
+     KNOWLEDGE GRAPH
+     ========================================================= */
+  var GRAPH = {
+    nodes: [
+      { id: 'sde',    label: 'Senior Data Engineer', kind: 'role', note: 'Genpact, Bengaluru — Oct 2024 to now. Technical strategy for a Databricks Lakehouse serving 10K+ users across 40+ domains.' },
+      { id: 'dsi',    label: 'Data Science Intern', kind: 'role', note: 'Genpact, Hyderabad — Feb to Aug 2024. Applied GenAI, clustering and NLP on real customer data.' },
+      { id: 'mcw',    label: 'ML Research Intern', kind: 'role', note: 'MulticoreWare, Remote — 2023. Neural architecture search and CNN compression.' },
+
+      { id: 'lake',   label: 'HR Lakehouse Platform', kind: 'project', note: 'Medallion pipelines, zero-downtime UKG to Workday migration for 10K+ employees, sub-5-minute streaming ingestion.' },
+      { id: 'rag',    label: 'PDF RAG Assistant', kind: 'project', note: 'Document chunking, vector embeddings and semantic search over PDFs, served through the OpenAI API.' },
+      { id: 'evo',    label: 'EvoPrunerPool', kind: 'project', note: 'Genetic-algorithm filter selection that compressed CNNs while holding baseline accuracy.' },
+      { id: 'viol',   label: 'Violence Detection', kind: 'project', note: 'Vision Transformers, X3D and a lightweight 3D CNN benchmarked on RWF-2000 and RLVS.' },
+      { id: 'fac',    label: 'Faculty Dashboard', kind: 'project', note: 'Flask and MySQL system for attendance, grading and assignment submission.' },
+
+      { id: 'de',     label: 'Data Engineering', kind: 'domain', note: 'Pipelines, governance and SLAs — the layer that decides whether a model ever sees good data.' },
+      { id: 'ml',     label: 'Machine Learning', kind: 'domain', note: 'Classical ML through deep learning, with a bias toward what is cheap enough to actually deploy.' },
+      { id: 'genai',  label: 'GenAI / LLMs', kind: 'domain', note: 'Retrieval-augmented generation, embeddings and transformer models in production paths.' },
+      { id: 'cv',     label: 'Computer Vision', kind: 'domain', note: 'Video understanding with 3D CNNs and Vision Transformers.' },
+      { id: 'nas',    label: 'NAS & Optimization', kind: 'domain', note: 'Multi-objective evolutionary search over accuracy, parameter count and latency.' },
+      { id: 'swe',    label: 'Software Engineering', kind: 'domain', note: 'Full-stack build and test discipline — the habit underneath everything else.' },
+
+      { id: 'dbx',    label: 'Databricks', kind: 'tech' },
+      { id: 'spark',  label: 'PySpark', kind: 'tech' },
+      { id: 'delta',  label: 'Delta Lake', kind: 'tech' },
+      { id: 'dlt',    label: 'Delta Live Tables', kind: 'tech' },
+      { id: 'air',    label: 'Airflow', kind: 'tech' },
+      { id: 'sql',    label: 'SQL', kind: 'tech' },
+      { id: 'py',     label: 'Python', kind: 'tech' },
+      { id: 'uc',     label: 'Unity Catalog', kind: 'tech' },
+      { id: 'devops', label: 'Azure DevOps', kind: 'tech' },
+      { id: 'tf',     label: 'TensorFlow', kind: 'tech' },
+      { id: 'pt',     label: 'PyTorch', kind: 'tech' },
+      { id: 'skl',    label: 'scikit-learn', kind: 'tech' },
+      { id: 'hf',     label: 'Hugging Face', kind: 'tech' },
+      { id: 'oai',    label: 'OpenAI API', kind: 'tech' },
+      { id: 'vit',    label: 'Vision Transformers', kind: 'tech' },
+      { id: 'nsga',   label: 'NSGA-Net / NEAT', kind: 'tech' },
+      { id: 'flask',  label: 'Flask', kind: 'tech' },
+      { id: 'mysql',  label: 'MySQL', kind: 'tech' }
+    ],
+    links: [
+      ['sde','de'], ['sde','lake'], ['sde','ml'],
+      ['dsi','genai'], ['dsi','ml'], ['dsi','rag'],
+      ['mcw','nas'], ['mcw','ml'], ['mcw','evo'],
+      ['lake','dbx'], ['lake','spark'], ['lake','delta'], ['lake','dlt'], ['lake','air'], ['lake','uc'], ['lake','devops'],
+      ['de','dbx'], ['de','spark'], ['de','sql'], ['de','py'], ['de','air'], ['de','delta'],
+      ['rag','oai'], ['rag','hf'], ['rag','py'],
+      ['genai','oai'], ['genai','hf'],
+      ['evo','nsga'], ['evo','pt'],
+      ['nas','nsga'], ['nas','pt'], ['nas','tf'],
+      ['viol','tf'], ['viol','vit'], ['viol','py'],
+      ['cv','vit'], ['cv','tf'], ['viol','cv'],
+      ['ml','tf'], ['ml','pt'], ['ml','skl'], ['ml','py'],
+      ['fac','flask'], ['fac','mysql'], ['fac','swe'],
+      ['swe','py'], ['dsi','skl']
+    ]
+  };
+
+  (function initGraph() {
+    var canvas = document.getElementById('graph-canvas');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var side = document.getElementById('graph-side');
+
+    var byId = {};
+    GRAPH.nodes.forEach(function (n) { byId[n.id] = n; });
+
+    // adjacency
+    var adj = {};
+    GRAPH.nodes.forEach(function (n) { adj[n.id] = []; });
+    GRAPH.links.forEach(function (l) {
+      if (!byId[l[0]] || !byId[l[1]]) return;
+      adj[l[0]].push(l[1]);
+      adj[l[1]].push(l[0]);
+    });
+
+    // text fallback
+    var textList = document.getElementById('graph-text');
+    GRAPH.nodes.forEach(function (n) {
+      var li = document.createElement('li');
+      var names = adj[n.id].map(function (id) { return byId[id].label; });
+      li.textContent = n.label + ' (' + n.kind + ') — connects to: ' + (names.join(', ') || 'nothing yet');
+      textList.appendChild(li);
+    });
+
+    var RADIUS = { role: 13, project: 10, domain: 11, tech: 6 };
+    var W = 0, H = 0, dpr = 1;
+
+    GRAPH.nodes.forEach(function (n, i) {
+      var a = (i / GRAPH.nodes.length) * Math.PI * 2;
+      n.x = Math.cos(a) * 150 + (Math.random() - 0.5) * 30;
+      n.y = Math.sin(a) * 130 + (Math.random() - 0.5) * 30;
+      n.vx = 0; n.vy = 0;
+      n.deg = adj[n.id].length;
+    });
+
+    function resize() {
+      var rect = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = rect.width; H = rect.height;
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    var css = getComputedStyle(document.documentElement);
+    function color(name) { return css.getPropertyValue(name).trim(); }
+    var palette = {};
+    function refreshPalette() {
+      css = getComputedStyle(document.documentElement);
+      palette = {
+        role: color('--cat-role'),
+        project: color('--cat-project'),
+        domain: color('--cat-domain'),
+        tech: color('--cat-tech'),
+        line: color('--line-strong'),
+        ink: color('--ink'),
+        faint: color('--ink-faint'),
+        bg: color('--bg-elevated')
+      };
+    }
+    refreshPalette();
+
+    var hovered = null, selected = null, dragging = null;
+    var alpha = 1;
+
+    function step() {
+      // repulsion
+      for (var i = 0; i < GRAPH.nodes.length; i++) {
+        var a = GRAPH.nodes[i];
+        for (var j = i + 1; j < GRAPH.nodes.length; j++) {
+          var b = GRAPH.nodes[j];
+          var dx = b.x - a.x, dy = b.y - a.y;
+          var d2 = dx * dx + dy * dy;
+          if (d2 < 1) { d2 = 1; dx = (Math.random() - 0.5); dy = (Math.random() - 0.5); }
+          var d = Math.sqrt(d2);
+          var rep = 2400 / d2;
+          var fx = (dx / d) * rep, fy = (dy / d) * rep;
+          a.vx -= fx; a.vy -= fy;
+          b.vx += fx; b.vy += fy;
+        }
+      }
+      // springs
+      GRAPH.links.forEach(function (l) {
+        var a = byId[l[0]], b = byId[l[1]];
+        if (!a || !b) return;
+        var dx = b.x - a.x, dy = b.y - a.y;
+        var d = Math.sqrt(dx * dx + dy * dy) || 0.01;
+        var target = 78;
+        var f = (d - target) * 0.035;
+        var fx = (dx / d) * f, fy = (dy / d) * f;
+        a.vx += fx; a.vy += fy;
+        b.vx -= fx; b.vy -= fy;
+      });
+      // centering + integrate + keep inside the frame (legend sits along the bottom)
+      var padX = W < 560 ? 26 : 62;
+      var padTop = 26, padBottom = 52;
+      var halfW = Math.max(60, W / 2 - padX);
+      var halfH = Math.max(60, (H - padTop - padBottom) / 2);
+      var cy = (padTop - padBottom) / 2;
+      GRAPH.nodes.forEach(function (n) {
+        n.vx -= n.x * 0.0016;
+        n.vy -= n.y * 0.0042;
+        if (n === dragging) { n.vx = 0; n.vy = 0; }
+        else {
+          n.vx *= 0.86; n.vy *= 0.86;
+          n.x += Math.max(-12, Math.min(12, n.vx)) * alpha;
+          n.y += Math.max(-12, Math.min(12, n.vy)) * alpha;
+        }
+        var r = RADIUS[n.kind] + 14;
+        if (n.x < -halfW + r) { n.x = -halfW + r; n.vx = Math.abs(n.vx) * 0.4; }
+        if (n.x > halfW - r)  { n.x = halfW - r;  n.vx = -Math.abs(n.vx) * 0.4; }
+        if (n.y < cy - halfH + r) { n.y = cy - halfH + r; n.vy = Math.abs(n.vy) * 0.4; }
+        if (n.y > cy + halfH - r) { n.y = cy + halfH - r; n.vy = -Math.abs(n.vy) * 0.4; }
+      });
+    }
+
+    function isLit(n) {
+      var focus = hovered || selected;
+      if (!focus) return true;
+      return n.id === focus.id || adj[focus.id].indexOf(n.id) !== -1;
+    }
+    function linkLit(l) {
+      var focus = hovered || selected;
+      if (!focus) return true;
+      return l[0] === focus.id || l[1] === focus.id;
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.save();
+      ctx.translate(W / 2, H / 2);
+
+      GRAPH.links.forEach(function (l) {
+        var a = byId[l[0]], b = byId[l[1]];
+        if (!a || !b) return;
+        ctx.globalAlpha = linkLit(l) ? 0.55 : 0.09;
+        ctx.strokeStyle = palette.line;
+        ctx.lineWidth = linkLit(l) && (hovered || selected) ? 1.3 : 0.8;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      });
+
+      GRAPH.nodes.forEach(function (n) {
+        var lit = isLit(n);
+        var r = RADIUS[n.kind] + Math.min(n.deg, 6) * 0.5;
+        ctx.globalAlpha = lit ? 1 : 0.16;
+        ctx.fillStyle = palette[n.kind];
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+        ctx.fill();
+
+        if (n === (hovered || selected)) {
+          ctx.strokeStyle = palette.ink;
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, r + 4, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        var focus = hovered || selected;
+        // On narrow canvases labels collide, so only the focused neighbourhood is named.
+        var showLabel = W < 560
+          ? (focus ? lit : n.kind === 'role')
+          : (n.kind !== 'tech' || (lit && focus));
+        if (showLabel) {
+          ctx.globalAlpha = lit ? 1 : 0.16;
+          ctx.fillStyle = n.kind === 'tech' ? palette.faint : palette.ink;
+          ctx.font = (n.kind === 'tech' ? '10px ' : '11.5px ') +
+            "'IBM Plex Sans', system-ui, sans-serif";
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'top';
+          ctx.fillText(n.label, n.x, n.y + r + 4);
+        }
+      });
+
+      ctx.restore();
+      ctx.globalAlpha = 1;
+    }
+
+    var raf = null;
+    function loop() {
+      if (alpha > 0.02) { step(); alpha *= 0.996; }
+      draw();
+      raf = requestAnimationFrame(loop);
+    }
+
+    function pick(px, py) {
+      var mx = px - W / 2, my = py - H / 2;
+      var best = null, bestD = 1e9;
+      GRAPH.nodes.forEach(function (n) {
+        var r = RADIUS[n.kind] + 8;
+        var d = Math.hypot(n.x - mx, n.y - my);
+        if (d < r && d < bestD) { best = n; bestD = d; }
+      });
+      return best;
+    }
+
+    function showSide(n) {
+      if (!n) {
+        side.innerHTML = '<span class="gs-kind">Start here</span><h3>The through-line</h3>' +
+          '<p>Three roles, five projects, one thread: data infrastructure and the models that run on it. Pick any node to see what it touches.</p>';
+        return;
+      }
+      var names = adj[n.id].map(function (id) { return byId[id].label; });
+      var kindWord = { role: 'Role', project: 'Project', domain: 'Domain', tech: 'Technology' }[n.kind];
+      var html = '<span class="gs-kind">' + kindWord + '</span><h3>' + n.label + '</h3>';
+      if (n.note) html += '<p>' + n.note + '</p>';
+      html += '<div class="gs-links"><h4>Connects to</h4><div class="tag-cloud">' +
+        names.map(function (x) { return '<span>' + x + '</span>'; }).join('') +
+        '</div></div>';
+      side.innerHTML = html;
+    }
+
+    function localPoint(e) {
+      var rect = canvas.getBoundingClientRect();
+      var t = e.touches ? e.touches[0] : e;
+      return { x: t.clientX - rect.left, y: t.clientY - rect.top };
+    }
+
+    canvas.addEventListener('mousemove', function (e) {
+      var p = localPoint(e);
+      if (dragging) {
+        dragging.x = p.x - W / 2;
+        dragging.y = p.y - H / 2;
+        alpha = Math.max(alpha, 0.35);
+        return;
+      }
+      var n = pick(p.x, p.y);
+      if (n !== hovered) {
+        hovered = n;
+        canvas.style.cursor = n ? 'pointer' : 'grab';
+        if (n) showSide(n);
+        else if (!selected) showSide(null);
+        else showSide(selected);
+      }
+    });
+
+    canvas.addEventListener('mouseleave', function () {
+      hovered = null;
+      showSide(selected);
+    });
+
+    canvas.addEventListener('mousedown', function (e) {
+      var p = localPoint(e);
+      var n = pick(p.x, p.y);
+      if (n) { dragging = n; selected = n; showSide(n); }
+    });
+
+    window.addEventListener('mouseup', function () {
+      if (dragging) { alpha = Math.max(alpha, 0.3); }
+      dragging = null;
+    });
+
+    canvas.addEventListener('touchstart', function (e) {
+      var p = localPoint(e);
+      var n = pick(p.x, p.y);
+      if (n) { e.preventDefault(); dragging = n; selected = n; hovered = n; showSide(n); }
+    }, { passive: false });
+
+    canvas.addEventListener('touchmove', function (e) {
+      if (!dragging) return;
+      e.preventDefault();
+      var p = localPoint(e);
+      dragging.x = p.x - W / 2;
+      dragging.y = p.y - H / 2;
+      alpha = Math.max(alpha, 0.35);
+    }, { passive: false });
+
+    canvas.addEventListener('touchend', function () { dragging = null; });
+
+    window.addEventListener('resize', resize);
+    window.addEventListener('tabshown', function () { resize(); });
+    new MutationObserver(refreshPalette).observe(document.documentElement, {
+      attributes: true, attributeFilter: ['data-theme']
+    });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', refreshPalette);
+
+    resize();
+    if (reduceMotion) {
+      for (var k = 0; k < 400; k++) step();
+      alpha = 0;
+      draw();
+      // still allow interaction repaints
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mousedown', draw);
+      canvas.addEventListener('mouseleave', draw);
+      window.addEventListener('mouseup', draw);
+    } else {
+      for (var k2 = 0; k2 < 120; k2++) step();
+      loop();
+    }
+  })();
+
+  /* =========================================================
+     CAREER MAP
+     ========================================================= */
+  (function initMap() {
+    var svg = document.getElementById('map-svg');
+    if (!svg) return;
+    var MASK = [
+      '......####....................',
+      '.....######...................',
+      '....########..................',
+      '...##########.....##..........',
+      '..############...####.........',
+      '.##############.######........',
+      '.#######################......',
+      '.######################.......',
+      '..#####################.......',
+      '...####################.......',
+      '...###################........',
+      '....##################........',
+      '....#################.........',
+      '.....###############..........',
+      '.....###############..........',
+      '......##############..........',
+      '......#############...........',
+      '......#############...........',
+      '.......###########............',
+      '.......###########............',
+      '.......########...............',
+      '.......#######................',
+      '.......#######................',
+      '........######................',
+      '........#####.................',
+      '........#####.................',
+      '........####..................',
+      '.........###..................',
+      '.........###..................',
+      '.........##...................',
+      '.........#....................'
+    ];
+    var CELL = 7.6, OX = 12, OY = 8;
+    var dots = document.getElementById('map-dots');
+    var frag = document.createDocumentFragment();
+    for (var r = 0; r < MASK.length; r++) {
+      for (var c = 0; c < MASK[r].length; c++) {
+        if (MASK[r][c] !== '#') continue;
+        var c2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c2.setAttribute('cx', (OX + c * CELL).toFixed(1));
+        c2.setAttribute('cy', (OY + r * CELL).toFixed(1));
+        c2.setAttribute('r', '1.5');
+        c2.setAttribute('class', 'map-dot');
+        frag.appendChild(c2);
+      }
+    }
+    dots.appendChild(frag);
+
+    // lat/lon -> grid, matching the mask projection
+    function project(lat, lon) {
+      var col = (lon - 68) / 29 * 29;
+      var row = (37 - lat) / 29 * 30;
+      return { x: OX + col * CELL, y: OY + row * CELL };
+    }
+
+    var CITIES = [
+      { name: 'Hyderabad', lat: 17.39, lon: 78.49, dx: 8, dy: -2 },
+      { name: 'Bengaluru', lat: 12.97, lon: 77.59, dx: 8, dy: 2 },
+      { name: 'Coimbatore', lat: 11.02, lon: 76.96, dx: -32, dy: 4 }
+    ];
+
+    var cityG = document.getElementById('map-cities');
+    var arcG = document.getElementById('map-arcs');
+    var pts = CITIES.map(function (city) {
+      var p = project(city.lat, city.lon);
+      var ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      ring.setAttribute('cx', p.x.toFixed(1));
+      ring.setAttribute('cy', p.y.toFixed(1));
+      ring.setAttribute('r', '6');
+      ring.setAttribute('class', 'map-city-ring');
+      cityG.appendChild(ring);
+
+      var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot.setAttribute('cx', p.x.toFixed(1));
+      dot.setAttribute('cy', p.y.toFixed(1));
+      dot.setAttribute('r', '3');
+      dot.setAttribute('class', 'map-city');
+      cityG.appendChild(dot);
+
+      var t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      t.setAttribute('x', (p.x + city.dx).toFixed(1));
+      t.setAttribute('y', (p.y + city.dy).toFixed(1));
+      t.setAttribute('class', 'map-label');
+      t.textContent = city.name;
+      cityG.appendChild(t);
+      return p;
+    });
+
+    // Coimbatore -> Bengaluru -> Hyderabad, in career order
+    var order = [pts[2], pts[1], pts[0]];
+    for (var i = 0; i < order.length - 1; i++) {
+      var a = order[i], b = order[i + 1];
+      var mx = (a.x + b.x) / 2 + (b.y - a.y) * 0.28;
+      var my = (a.y + b.y) / 2 - (b.x - a.x) * 0.28;
+      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M' + a.x.toFixed(1) + ',' + a.y.toFixed(1) +
+        ' Q' + mx.toFixed(1) + ',' + my.toFixed(1) + ' ' + b.x.toFixed(1) + ',' + b.y.toFixed(1));
+      path.setAttribute('class', 'map-arc');
+      arcG.appendChild(path);
+    }
+  })();
+
+  /* =========================================================
+     GAME 1 — BUILD THE PIPELINE
+     ========================================================= */
+  (function initPipeline() {
+    var tray = document.getElementById('pipe-tray');
+    var rail = document.getElementById('pipe-rail');
+    if (!tray || !rail) return;
+
+    var timeEl = document.getElementById('pipe-time');
+    var missEl = document.getElementById('pipe-miss');
+    var bestEl = document.getElementById('pipe-best');
+    var verdict = document.getElementById('pipe-verdict');
+
+    var STAGES = [
+      { label: 'Source systems', why: 'Workday, UKG, Greenplum — wherever the records actually live.' },
+      { label: 'Auto Loader ingest', why: 'Incremental file discovery with CDC merge, landing new records in minutes.' },
+      { label: 'Bronze — raw', why: 'Append-only history. Nothing is reshaped yet, so nothing is lost.' },
+      { label: 'Silver — cleansed', why: 'Deduplicated, conformed, quality-checked. SCD Type 2 lives here.' },
+      { label: 'Gold — curated', why: 'Business-level aggregates and star schemas, tuned with Z-Ordering.' },
+      { label: 'BI &amp; ML consumers', why: 'Dashboards, feature tables and the 10K+ people downstream.' }
+    ];
+
+    var order = 0, misses = 0, startedAt = null, ticker = null;
+    var BEST_KEY = 'pipe-best-time';
+
+    try {
+      var b = localStorage.getItem(BEST_KEY);
+      if (b) bestEl.textContent = parseFloat(b).toFixed(1) + 's';
+    } catch (e) {}
+
+    function tick() {
+      if (!startedAt) return;
+      timeEl.textContent = ((performance.now() - startedAt) / 1000).toFixed(1) + 's';
+    }
+
+    function reset() {
+      order = 0; misses = 0; startedAt = null;
+      clearInterval(ticker); ticker = null;
+      timeEl.textContent = '0.0s';
+      missEl.textContent = '0';
+      verdict.hidden = true;
+      rail.innerHTML = '';
+      tray.innerHTML = '';
+
+      var idx = STAGES.map(function (_, i) { return i; });
+      for (var i = idx.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = idx[i]; idx[i] = idx[j]; idx[j] = t;
+      }
+      idx.forEach(function (i) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'stage-chip';
+        btn.innerHTML = STAGES[i].label;
+        btn.dataset.index = String(i);
+        btn.addEventListener('click', function () { choose(btn, i); });
+        tray.appendChild(btn);
+      });
+    }
+
+    function choose(btn, i) {
+      if (btn.disabled) return;
+      if (!startedAt) { startedAt = performance.now(); ticker = setInterval(tick, 100); }
+
+      if (i !== order) {
+        misses++;
+        missEl.textContent = String(misses);
+        btn.classList.remove('shake');
+        void btn.offsetWidth;
+        btn.classList.add('shake');
+        return;
+      }
+
+      btn.disabled = true;
+      if (rail.children.length) {
+        var arrow = document.createElement('span');
+        arrow.className = 'rail-arrow';
+        arrow.setAttribute('aria-hidden', 'true');
+        arrow.textContent = '→';
+        rail.appendChild(arrow);
+      }
+      var chip = document.createElement('span');
+      chip.className = 'stage-chip';
+      chip.innerHTML = STAGES[i].label;
+      rail.appendChild(chip);
+      order++;
+
+      if (order === STAGES.length) finish();
+    }
+
+    function finish() {
+      clearInterval(ticker); ticker = null;
+      var secs = (performance.now() - startedAt) / 1000;
+      timeEl.textContent = secs.toFixed(1) + 's';
+
+      var best = null;
+      try {
+        var raw = localStorage.getItem(BEST_KEY);
+        best = raw ? parseFloat(raw) : null;
+        if (best === null || secs < best) {
+          localStorage.setItem(BEST_KEY, String(secs));
+          best = secs;
+        }
+      } catch (e) { best = secs; }
+      bestEl.textContent = best.toFixed(1) + 's';
+
+      var html = '<strong>' + (misses === 0 ? 'Clean run.' : 'Built it.') + '</strong> ' +
+        secs.toFixed(1) + 's with ' + misses + ' miss' + (misses === 1 ? '' : 'es') +
+        '. This is the shape of the platform I run at Genpact — here is what each layer is for:<br><br>';
+      html += STAGES.map(function (s) {
+        return '<strong>' + s.label + '</strong> — ' + s.why;
+      }).join('<br>');
+      verdict.className = 'verdict is-win';
+      verdict.innerHTML = html;
+      verdict.hidden = false;
+    }
+
+    document.getElementById('pipe-reset').addEventListener('click', reset);
+    reset();
+  })();
+
+  /* =========================================================
+     GAME 2 — TUNE THE JOB
+     ========================================================= */
+  (function initOptimizer() {
+    var grid = document.getElementById('opt-grid');
+    if (!grid) return;
+
+    var BASE_TIME = 240, BASE_COST = 100;
+    var TARGET_TIME = 120, TARGET_COST = 60, MAX_PICKS = 3;
+
+    var OPTS = [
+      { id: 'zorder', name: 'Z-Order on the join key', why: 'Co-locates related rows so the scan skips more files.', t: 0.72, c: 0.88,
+        verdict: 'Solid. Fewer files touched means less I/O and less shuffle.' },
+      { id: 'broadcast', name: 'Broadcast the dimension', why: 'The dimension is small — ship it to every executor.', t: 0.65, c: 0.80,
+        verdict: 'The biggest single win here. A broadcast join kills the shuffle outright.' },
+      { id: 'partition', name: 'Partition by event_date', why: 'The job filters on a date range every night.', t: 0.80, c: 0.75,
+        verdict: 'Good. Partition pruning means you never read most of the 4 TB.' },
+      { id: 'prune', name: 'Column pruning + predicate pushdown', why: 'The query only needs 9 of 120 columns.', t: 0.78, c: 0.70,
+        verdict: 'Cheapest win on the board. Read less, pay less, finish sooner.' },
+      { id: 'cache', name: 'Cache the reused DataFrame', why: 'It is referenced twice downstream.', t: 0.85, c: 1.05,
+        verdict: 'Mild help, but caching 4 TB costs memory you are paying for.' },
+      { id: 'scale', name: 'Double the cluster size', why: 'Throw hardware at it.', t: 0.60, c: 1.90,
+        verdict: 'The trap. It genuinely runs faster and it wrecks your cost line.' },
+      { id: 'repart', name: 'Repartition to 2000 partitions', why: 'More parallelism, surely?', t: 1.15, c: 1.10,
+        verdict: 'The other trap. Over-partitioning adds shuffle and small-file overhead.' }
+    ];
+
+    var picked = {};
+    var countEl = document.getElementById('opt-count');
+    var timeEl = document.getElementById('opt-time');
+    var costEl = document.getElementById('opt-cost');
+    var timeBar = document.getElementById('opt-time-bar');
+    var costBar = document.getElementById('opt-cost-bar');
+    var verdict = document.getElementById('opt-verdict');
+    var explained = false;
+
+    OPTS.forEach(function (o) {
+      var label = document.createElement('label');
+      label.className = 'opt';
+      label.innerHTML =
+        '<input type="checkbox" value="' + o.id + '">' +
+        '<span><span class="opt-name">' + o.name + '</span>' +
+        '<span class="opt-why">' + o.why + '</span></span>';
+      var input = label.querySelector('input');
+      input.addEventListener('change', function () {
+        if (input.checked) {
+          if (Object.keys(picked).length >= MAX_PICKS) { input.checked = false; return; }
+          picked[o.id] = o;
+        } else {
+          delete picked[o.id];
+        }
+        label.classList.toggle('is-on', input.checked);
+        update();
+      });
+      label.dataset.id = o.id;
+      grid.appendChild(label);
+    });
+
+    function update() {
+      var keys = Object.keys(picked);
+      var t = BASE_TIME, c = BASE_COST;
+      keys.forEach(function (k) { t *= picked[k].t; c *= picked[k].c; });
+      t = Math.round(t); c = Math.round(c);
+
+      countEl.textContent = String(keys.length);
+      timeEl.textContent = t + 's';
+      costEl.textContent = c + ' DBU';
+
+      var timeOk = t <= TARGET_TIME, costOk = c <= TARGET_COST;
+      timeBar.style.width = Math.min(100, (t / BASE_TIME) * 100) + '%';
+      costBar.style.width = Math.min(100, (c / BASE_COST) * 100) + '%';
+      timeBar.classList.toggle('is-ok', timeOk);
+      costBar.classList.toggle('is-ok', costOk);
+
+      // lock remaining options at the cap
+      grid.querySelectorAll('.opt').forEach(function (el) {
+        var input = el.querySelector('input');
+        var atCap = keys.length >= MAX_PICKS && !input.checked;
+        el.classList.toggle('is-locked', atCap);
+        input.disabled = atCap;
+      });
+
+      if (!keys.length) {
+        verdict.className = 'verdict';
+        verdict.innerHTML = 'Pick up to three optimizations and watch the meters.';
+        return;
+      }
+      if (timeOk && costOk) {
+        verdict.className = 'verdict is-win';
+        verdict.innerHTML = '<strong>Shipped.</strong> ' + t + 's and ' + c +
+          ' DBU — under both targets. That is the trade I make on real jobs: cut the work before you buy more hardware.';
+      } else {
+        var missing = [];
+        if (!timeOk) missing.push('still ' + (t - TARGET_TIME) + 's over on runtime');
+        if (!costOk) missing.push((c - TARGET_COST) + ' DBU over budget');
+        verdict.className = 'verdict is-lose';
+        verdict.innerHTML = '<strong>Not there yet</strong> — ' + missing.join(', ') + '.';
+      }
+    }
+
+    document.getElementById('opt-reset').addEventListener('click', function () {
+      picked = {};
+      explained = false;
+      grid.querySelectorAll('input').forEach(function (i) { i.checked = false; i.disabled = false; });
+      grid.querySelectorAll('.opt').forEach(function (e) { e.classList.remove('is-on', 'is-locked'); });
+      update();
+    });
+
+    document.getElementById('opt-explain').addEventListener('click', function () {
+      explained = !explained;
+      if (!explained) { update(); return; }
+      verdict.className = 'verdict';
+      verdict.innerHTML = '<strong>What each one actually does:</strong><br><br>' +
+        OPTS.map(function (o) {
+          return '<strong>' + o.name + '</strong> — ' + o.verdict;
+        }).join('<br>');
+    });
+
+    update();
+  })();
+})();
+</script>
+
+</body>
+</html>
